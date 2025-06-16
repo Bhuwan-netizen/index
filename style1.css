@@ -425,8 +425,14 @@ nav .fas
         text-align: center;
     }
 
-    .header-text h1 {
+    .header-text h2 {
         font-size: 30px;
+    }
+
+    .header-text h2{
+        position: relative;
+        left: 120px;
+       top: 40px;
     }
 
     nav .fas {
