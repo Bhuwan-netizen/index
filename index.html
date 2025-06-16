@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header Section -->
+    <div id="header">
+        <div class="container">
+            <nav>
+                <h1 class="logo">MyPortfolio</h1>
+                <ul id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <i class="fas fa-times" onclick="closeMenu()"></i>
+                </ul>
+                <i class="fas fa-bars" onclick="openMenu()"></i>
+            </nav>
+            <div class="header-text">
+                <h5 class="text">Computer Engineer <span>(about to be)</span>  and Developer</h5>
+                <h2 class="bhuwan"> Hi, I'm <span class="bhuone">Bhuwan</span><br>from  Nepal</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="aboutcol1">
+                    <img src="images/bb.jpeg" alt="My Photo">
+                </div>
+                <div class="aboutcol2">
+                    <h1 class="subtitle">About Me</h1>
+<p>
+I'm a passionate and detail-oriented developer with a strong interest in web technologies, cybersecurity, and clean design. I enjoy turning complex problems into simple, elegant solutions and continuously strive to learn and grow in the tech space.
+</p>
+
+                    <div class="tabtitles">
+                        <p class="tablinks activelink" onclick="opentab('skills')">Skills</p>
+                        <p class="tablinks" onclick="opentab('experience')">Experience</p>
+                        <p class="tablinks" onclick="opentab('education')">Education</p>
+                    </div>
+
+                    <div class="tabcontents activetab" id="skills">
+                        <ul>
+                            <li><span>HTML/CSS</span><br>Designing Web Interfaces</li>
+                            <li><span>JavaScript</span><br>Web Interactivity</li>
+                            <li><span>React</span><br>Building Single Page Apps</li>
+                                    <li><span>App Development</span><br>Creating Android and cross-platform mobile applications</li>
+        <li><span>Cybersecurity</span><br>Securing systems through pen testing and vulnerability assessment</li>
+
+                        </ul>
+                    </div>
+                    <div class="tabcontents" id="experience">
+                        <ul>
+                            <li><span>2024 - Present</span><br>Front-End Developer at Phoenix IT</li>
+                            <li><span>2023 - 2024</span><br>Network Admin</li>
+                        </ul>
+                    </div>
+                    <div class="tabcontents" id="education">
+                        <ul>
+                            <li><span>2025 - Present</span><br>Bachelor's Degree in Computer Engineering</li>
+                            <li><span>2023 - 2025</span><br>Diploma in Network systems- Mohawk college, Canada</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <div id="services">
+        <div class="container">
+            <h1 class="subtitle">My Services</h1>
+            <div class="serviceslist">
+                <div>
+                    <i class="fas fa-code"></i>
+                    <h2>Web Design</h2>
+                    <p>Modern and responsive website designs using latest technologies.</p>
+                    <a href="#">Learn more</a>
+                </div>
+                <div>
+                    <i class="fas fa-crop-alt"></i>
+                    <h2>UI/UX Design</h2>
+                    <p>User-centered design strategies to enhance user experience.</p>
+                    <a href="#">Learn more</a>
+                </div>
+                <div>
+                    <i class="fab fa-app-store"></i>
+                    <h2>App Design</h2>
+                    <p>Interactive and intuitive mobile application interfaces.</p>
+                    <a href="#">Learn more</a>
+                </div>
+                <div>
+
+
+<h2>Cyber Security</h2>
+<i class="fa-solid fa-shield"></i>
+<p>
+Penetration Testing simulates real-world cyberattacks to identify and fix security vulnerabilities before hackers can exploit them.
+</p>
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Section -->
+    <div id="portfolio">
+        <div class="container">
+            <h1 class="subtitle">My Work</h1>
+            <div class="worklist">
+                <div class="work">
+                    
+                <div class="card">
+<div class="card-inner">
+
+    <div class="card-front">
+
+                    <img src="images/clone.png" class="clone" alt="Project 1">
+                    </div>
+                    <div class="card-back">
+                    <a href="spotifyclone.html">Spotify Clone <span class="clickme">(Click Me)</span></a>
+                    <p>A Minimalistic Spotify Clone .</p>
+
+
+</div>
+</div>
+</div>
+                </div>
+
+
+                <div class="work">
+
+                         
+                <div class="card">
+<div class="card-inner">
+
+    <div class="card-front">
+                   <img src="images/sneaker.png" class="clone" alt="Project 2">
+                   </div>
+                   <div class="card-back">
+                    <a href="shoes.html">Sneaker Website <span class="clickme">(Click Me)</span></a>
+                    <p>Modern Sneakers Website.</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contactleft">
+                    <h1 class="subtitle">Contact Me</h1>
+                    <p><i class="fas fa-paper-plane"></i> bhuwansangroula588@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +977 9815910188</p>
+                    <div class="socialicons">
+                        <a href="https://facebook.com"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/_bhuone__/"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <a href="Bhuwan Sangroula- Resume.docx" download class="btn btn2"><span>Download CV</span></a>
+                </div>
+                <div class="contactright">
+                    <form>
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="Email" placeholder="Your Email" required>
+                        <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                        <button type="submit" class="btn btn2">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <script>
+        let tabLinks = document.getElementsByClassName("tablinks");
+        let tabContents = document.getElementsByClassName("tabcontents");
+
+        function opentab(tabName) {
+            for (let link of tabLinks) {
+                link.classList.remove("activelink");
+            }
+            for (let content of tabContents) {
+                content.classList.remove("activetab");
+            }
+            event.currentTarget.classList.add("activelink");
+            document.getElementById(tabName).classList.add("activetab");
+        }
+
+        function openMenu() {
+            document.getElementById("sidemenu").style.right = "0";
+        }
+
+        function closeMenu() {
+            document.getElementById("sidemenu").style.right = "-200px";
+        }
+    </script>
+</body>
+</html>
