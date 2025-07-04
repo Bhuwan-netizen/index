@@ -87,6 +87,24 @@ font-size: 14px;
     font-size: 20px;
 }
 
+.text{
+    font-weight: bold;
+    font-size: 18px;
+    position: relative;
+    bottom: 120px;
+    
+   
+}
+
+.bhuwan{
+    font-weight: bold;
+    font-size: 40px;
+    position: relative;
+    bottom: 100px;
+
+}
+
+
 nav{
     display: flex;
     align-items: center;
@@ -422,11 +440,18 @@ nav .fas
     
 .text {
         position: relative;
-        top: -20px;
-        font-size: 18px;
-        text-align: center;
+        top: 140px;
+        font-size: 14px;
+        font-weight: bold;
     }
+
    
+
+    .bhuwan {
+        position: relative;
+        bottom: 170px;
+        font-weight: bold;
+    }
 
     .header-text h2{
         position: relative;
@@ -510,11 +535,6 @@ nav .fas
 
     
 
-    .bhuwan {
-        position: relative;
-        top: 140px;
-        text-align: center;
-    }
 
     .header-text h5 {
         font-size: 20px;
