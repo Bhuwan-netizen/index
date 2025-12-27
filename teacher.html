@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Teacher – Upload Notes</title>
+  <link rel="stylesheet" href="style67.css">
+</head>
+
+<body onload="protectPage('teacher'); displayNotes();">
+
+  <div class="header">
+  <h1>Pathivara Engineering College</h1>
+  <h3>Notes Sharing Platform for Computer Engineering Faculty</h3>
+  <h4>Batch 2082 B.S / 2025 A.D </h4>
+</div>
+
+<div class="container">
+ <h2>Teacher Dashboard</h2>
+
+  <input type="text" id="noteTitle" placeholder="Note Title">
+
+  <br><br>
+
+  <input type="file" id="noteFile">
+
+  <br><br>
+
+  <!-- IMPORTANT: type="button" -->
+  <button type="button" onclick="uploadNote()">
+    Upload Note
+  </button>
+
+  <hr>
+
+  <div id="notesList"></div>
+
+  <br>
+  <button onclick="logout()">Logout</button>
+
+  <script src="script.js"></script>
+
+</div>
+
+
+</body>
+</html>

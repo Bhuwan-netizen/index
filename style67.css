@@ -1,0 +1,35 @@
+body {
+  font-family: Arial;
+  text-align: center;
+  margin-top: 40px;
+}
+
+input, button {
+  padding: 8px;
+  margin: 5px;
+  width: 220px;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.container{
+  position: relative;
+  top:60px;
+  background-color: burlywood;
+  width: 600px;
+ right: -350px;
+}
+
+.header{
+  background-color: burlywood;
+  width: 400px;
+  position: relative;
+  left: 450px;
+}
