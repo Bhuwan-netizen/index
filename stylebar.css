@@ -1,0 +1,230 @@
+:root {
+
+    --color-text-primary: #1F2936;
+    --color-text-placeholder: #798EAE;
+    --color-bg-primary: #f9fafb;
+    --color-bg-secondary: #ECECFD;
+    --color-bg-sidebar: #FFFFFF;
+    --color-border-hr: #E2E8F0;
+    --color-hover-primary: #695CFE;
+    --color-hover-secondary: #e2e2fb;
+    --color-shadow: rgba (0, 0, 0 0.05,);
+
+}
+
+
+body{
+    background: var(--color-bg-primary);
+}
+
+.background{
+    background: lightcoral;
+    width: 190px;
+}
+
+.loginbtn{
+    width: 80px;
+    height: 25px;
+
+}
+
+.dashcontainer{
+    background: #695CFE;
+    height: 400px;
+}
+
+.dashtext{
+    font-size: 21px;
+    font-family: sans-serif;
+    
+}
+
+.introcenter{
+text-align: center;
+background-color: #695CFE;
+}
+
+
+.sidebar {
+
+    position: absolute;
+    top: 10px;
+    height: 100vh;
+    width: 270px;
+    background: var(--color-bg-sidebar);
+    border-right: 1px solid var(--color-border-hr);
+    box-shadow: 0 3px 9px var(--color-shadow);
+}
+
+.sidebar .sidebar-header {
+
+    display: flex;
+    padding: 20px 18px;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--color-border-hr);
+
+}
+
+
+.sidebar-header .header-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
+}
+
+.sidebar-header .sidebar-toggle{
+    height: 40px;
+    width: 40px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-primary);
+    background: var(--color-bg-secondary);
+    transition: 0.5s ease;
+
+}
+
+.sidebar-header .sidebar-toggle:hover {
+    background: var(--color-hover-secondary);
+}
+
+.sidebar .sidebar-content {
+   
+    position: absolute;
+    /* left: -40px; */
+    padding: 20px 18px;
+    overflow: hidden auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-text-placeholder) transparent;
+}
+
+.sidebar-content .menu-list {
+    display: flex;
+    gap: 7px;
+    flex-direction: column;
+    list-style: none;
+    width: 200px;
+
+}
+
+.sidebar-content .menu-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    white-space: nowrap;
+    padding: 12px 15px;
+    border-radius: 8px;
+    color: var(--color-text-primary);
+    background:var(--color-hover-primary);
+    transition: 0.4s ease;
+}
+
+.menu-list .menu-link:hover {
+    color: white;
+}
+ 
+.footer{
+    position: fixed;
+    bottom: 10px;
+    left: 50px;
+
+}
+
+.footer, button {
+    background: lightcoral;
+    border-radius: 6px;
+   
+}
+
+
+.footer, button:hover {
+    color: whitesmoke
+}
+
+/* =====================================
+   FOR HIDING SLIDEBAR
+   ===================================== */
+
+.sidebar {
+    overflow: hidden;
+}
+
+/* collapsed width */
+.sidebar.collapsed {
+    width: 70px;
+}
+
+/* FORCE content back inside sidebar */
+.sidebar.collapsed .sidebar-content {
+    position: relative;
+    left: 0 ;
+    right: auto;
+    padding: 20px 0;
+}
+
+/* FORCE menu to stay inside */
+.sidebar.collapsed .menu-list {
+    width: 100%;
+    padding-left: 0;
+}
+
+/* FORCE items to the LEFT */
+.sidebar.collapsed .menu-item {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start !important;
+    padding-left: 10px;
+}
+
+/* icon button */
+.sidebar.collapsed .menu-link {
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+/* hide text only */
+.sidebar.collapsed .menu-label {
+    display: none ;
+}
+
+/* KEEP TOGGLE BUTTON VISIBLE */
+.sidebar.collapsed .sidebar-header {
+    justify-content: center;
+}
+
+.sidebar.collapsed .sidebar-toggle {
+    display: flex;
+}
+
+/* hide footer */
+.sidebar.collapsed .footer {
+    display: none;
+}
+
+
+/* CSS FOR MAIN CONTENT */
+
+.main-content {
+    margin-left: 270px; 
+    padding: 20px;
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
+
