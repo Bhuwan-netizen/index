@@ -228,3 +228,41 @@ background-color: #695CFE;
 }
 
 
+
+@media (max-width: 768px) {
+
+    /* Sidebar becomes slimmer instead of disappearing */
+    .sidebar {
+        width: 220px;
+    }
+
+    .sidebar.collapsed {
+        width: 60px;
+    }
+
+    /* Main content uses full width */
+    .main-content {
+        margin-left: 220px;
+    }
+
+    /* When sidebar is collapsed */
+    .sidebar.collapsed ~ .container .main-content {
+        margin-left: 60px;
+    }
+
+    /* Text scaling for mobile */
+    .dashtext {
+        font-size: 18px;
+    }
+
+    .background {
+        width: 190px;
+    }
+
+    .footer{
+        position: relative;
+        top: 20px;
+        width: 100px;
+    }
+
+}
