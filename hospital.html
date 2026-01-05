@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="hos.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+</head>
+<body>
+    <div class="nav">
+        <div class="hoslogo"><img src="images1/hoslogo.png" alt=""></div>
+        <ul class="nav-links">
+           <a href="#aboutus" ><li>About Us</li> </a>
+           <a href="appointment.html"><li>Appointments</li> </a>
+           <a href="#department"><li>Departments</li></a> 
+           <a href="#contact"> <li>Contact</li></a>
+        
+        </ul>
+
+
+
+    </div>
+
+   <div class="hero">
+    <div class="hero-content">
+        <h1 id="home">
+            Hello, Welcome to Bhuwan's Medicity Hospital
+            
+            <br><br><span>Nepal's Top Listed Hospital</span>
+        </h1>
+
+        <h2>Description about the hospital</h2>
+
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Atque tempore laboriosam facilis corrupti dolorum fuga. <br>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione cum odio minima numquam cumque voluptatem!
+        </p>
+
+        <a href="#aboutus"><button class="learnmore">Learn more</button></a>
+    </div>
+</div>
+
+
+<div class="cards">
+
+<div class="card1" onclick="openFindDoctorPage()">
+     
+     <div class="inside" id="find" >
+     <img src="images1/find.png" alt="">
+    <h3>Find a doctor</h3>
+    <p>Choose doctor by name,  <br>speciaity
+         and more </p>
+    </div>
+
+</div>
+
+
+<div class="card2">
+
+    <div class="inside" >
+<img src="images1/inquiry.png" alt="" id="inquiryBtn">  
+<h3>Send an inquiry</h3>
+<p>You can contact us if any <br>
+     doubts</p>
+</div>
+
+</div>
+
+
+
+<div class="card3" id="appointment" onclick="openAppointmentPage()">
+
+    <div class="inside">
+<img src="images1/book.png" alt="">
+<h3>Book an appointment</h3>
+<p>Books with us for future Appointments</p>
+</div> 
+<!--inside div close-->
+
+</div>
+ <!--card3 close-->
+
+
+
+
+
+</div>
+
+<!--cards div close-->
+
+<div class="specialties-container" id="department">
+
+    <div class="specialties-header">
+      <h2>Specialities</h2>
+    </div>
+
+    <div class="specialties-grid">
+
+      <div class="specialty">
+        <span class="material-symbols-rounded">medical_services</span>
+        <p>Anesthesia and Pain Management</p>
+      </div>
+
+      <div class="specialty">
+        <span class="material-symbols-rounded">cardiology</span>
+        <p>Cardiology</p>
+      </div>
+
+      <div class="specialty">
+       <span class="material-symbols-rounded">spa</span>
+
+        <p>Chiropractic</p>
+      </div>
+
+      <div class="specialty">
+          <span class="material-symbols-rounded">syringe</span>
+        <p>Medical Oncology</p>
+      </div>
+
+      <div class="specialty">
+          <span class="material-symbols-rounded">meal_dinner</span>
+        <p>Dietetics and Nutrition</p>
+      </div>
+
+      <div class="specialty">
+        <span class="material-symbols-rounded">surgical</span>
+        <p>Colorectal Surgery</p>
+      </div>
+     
+      <div class="specialty">
+          <span class="material-symbols-rounded">dentistry</span>
+        <p>Dentistry</p>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <div class="footer" id="aboutus">
+
+    <div class="footer-col">
+        <h2>For Patients</h2>
+        <ul>
+            <li><a href="#find">Find a doctor</a></li>
+            <li class="socialicons">
+                <img src="images1/socialicons.png" alt="">
+            </li>
+        </ul>
+    </div>
+
+    <div class="footer-col">
+        <h2>Quick links</h2>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li>Career</li>
+        </ul>
+    </div>
+
+    <div class="footer-col">
+        <h2 id="contact">Contact Us</h2>
+        <ul>
+            <li>Address: Birtamode-05, Jhapa, Nepal</li>
+            <li>Phone: 9815910188</li>
+            <li>Email: info@bhuwanmedicity.com</li>
+        </ul>
+    </div>
+
+</div>
+
+
+
+
+<div id="inquiryModal" style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    z-index:9999;
+">
+    <div style="
+        background:#fff;
+        width:90%;
+        max-width:400px;
+        margin:80px auto;
+        padding:20px;
+        border-radius:8px;
+    ">
+        <span onclick="closeInquiry()" style="float:right; cursor:pointer; font-size:20px;">×</span>
+
+        <h3>Patient Inquiry</h3>
+
+        <form>
+            <input type="text" placeholder="Patient Name" required style="width:100%; margin-bottom:10px;">
+            <input type="text" placeholder="Address" required style="width:100%; margin-bottom:10px;">
+            <input type="email" placeholder="Email" required style="width:100%; margin-bottom:10px;">
+            <input type="tel" placeholder="Phone" required style="width:100%; margin-bottom:10px;">
+            <textarea placeholder="Message" required style="width:100%; margin-bottom:10px;"></textarea>
+
+            <button type="submit" style="width:100%; padding:10px; background:#8e24aa; color:white; border:none;">
+                Submit
+            </button>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+<script>
+
+
+
+function openFindDoctorPage() {
+    window.location.href = 'find-doctor.html';  // Redirect to the find-doctor page
+}
+
+
+
+
+function openAppointmentPage() {
+    window.location.href = "appointment.html";
+}
+
+
+
+document.getElementById("inquiryBtn").addEventListener("click", function () {
+    document.getElementById("inquiryModal").style.display = "block";
+});
+
+function closeInquiry() {
+    document.getElementById("inquiryModal").style.display = "none";
+}
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+.doccontainer{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    position: relative;
+    top: 40px;
+    /* border: 3px solid #7f5cc1; */
+}
+
+.doc1 , .doc2 , .doc3, .doc4 , .doc5, .doc6{
+   
+    height :396px;
+    width: 300px;
+    border: 2px solid black;
+}
+
+.docimg{
+    display: flex;
+    justify-content: center;
+}
+
+.doc1 img{
+    height: 100px;
+}
+
+.doc2 img{
+    height: 94px;
+  
+}
+
+.doc3 img{
+    height: 157px;
+}
+
+
+.doccontainer2{
+     display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    position: relative;
+    top: 80px;
+
+}
+
+.icons{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+
+ .icons img{
+    height: 38px;
+ }
+
+ .icons img:hover{
+    cursor: pointer;
+ }
+
+ 
+ .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+}
+
+.modal-content {
+    background: #fff;
+    width: 300px;
+    margin: 120px auto;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.close {
+    float: right;
+    cursor: pointer;
+    font-size: 22px;
+}

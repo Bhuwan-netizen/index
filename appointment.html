@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Appointment</title>
+
+<style>
+.container{
+display:flex ;
+justify-content: center;
+flex-wrap: wrap;
+}
+
+h2{
+    text-align: center;
+    font-size: 32px;
+}
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+<h2>Welcome to our Portal. Book an Appointment</h2>
+<div class="container">
+
+
+
+
+
+<form id="appointmentForm">
+
+    <!-- Problem selection -->
+    <label>What problem are you facing?</label><br>
+    <select id="problem" onchange="loadDoctors()" required>
+        <option value="">-- Select Problem --</option>
+        <option value="heart">Heart Problem</option>
+        <option value="skin">Skin Problem</option>
+        <option value="eye">ENT Problem</option>
+        <option value="Diet">Diet and Nutrition</option>
+        <option value="Dental">Dental Problem</option>
+        <option value="overall">Physician</option>
+        <option value="Bones">Orthopeadic</option>
+        <option value="urine">Urologist</option>
+    </select><br><br>
+
+    <!-- Doctor selection -->
+    <label>Select Doctor</label><br>
+    <select id="doctor" required>
+        <option value="">-- Select Doctor --</option>
+    </select><br><br>
+
+    <!-- Date -->
+    <label>Appointment Date</label><br>
+    <input type="date" required><br><br>
+
+    <!-- Time -->
+    <label>Time</label><br>
+    <input type="time" required><br><br>
+
+    <button type="submit">Book Appointment</button>
+</form>
+
+
+</div>
+
+
+
+
+
+
+<script >
+
+
+
+function loadDoctors() {
+    const problem = document.getElementById("problem").value;
+    const doctorSelect = document.getElementById("doctor");
+
+    doctorSelect.innerHTML = '<option value="">-- Select Doctor --</option>';
+
+    const doctors = {
+        heart: ["Dr. Sharma (Cardiologist)", "Dr. Mehta (Heart Specialist)"],
+        skin: ["Dr. Roy (Dermatologist)", "Dr. Khan (Skin Specialist)"],
+        eye: ["Dr. Verma (Ophthalmologist)", "Dr. Patel (Eye Specialist)"],
+        Diet: ["Dr. Bhuwan (Dietrician)"],
+        Dental: ["Dr. Bhuwan (Dentist)"],
+        overall: ["Dr. Bhuwan (General Physician)"],
+    };
+
+    if (doctors[problem]) {
+        doctors[problem].forEach(doc => {
+            let option = document.createElement("option");
+            option.text = doc;
+            option.value = doc;
+            doctorSelect.add(option);
+        });
+    }
+}
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

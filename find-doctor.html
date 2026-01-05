@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find a Doctor</title>
+    <link rel="stylesheet" href="find-doctor.css">
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" id="searchName" placeholder="Search by name">
+        <input type="text" id="searchSpecialty" placeholder="Search by specialty">
+        <button onclick="searchDoctors()">Search</button>
+    </div>
+
+    <div id="doctorList">
+        <!-- List of doctors will appear here -->
+    </div>
+
+
+
+    <h1 style="text-align: center;">Select a Doctor</h1>
+
+
+
+
+    <div class="doccontainer">
+
+
+
+
+<div class="doc1">
+
+ <div class="docimg"><img src="images1/johndoe.png" alt=""></div>
+
+ <h2>Dr. John Doe</h2>
+
+<p>
+    M.B.B.S., M.S, Clinical Fellowship (Cardiac Surgery), Advanced Clinical Fellowship (Adult Cardiac Surgery)
+</p>    
+
+<h4>specialities</h4>
+
+<p>
+    Adult Cardiac Surgeon, Aortic and Endovascular Surgery, Cardiovascular and Thoracic Surgery
+</p>
+
+<div class="icons">
+
+<img 
+  src="images1/phoneicon.png" 
+  alt="Call"
+  onclick="alert('Dr. John Doe\nPhone: +91 98765 43210\nEmail: johndoe@hospital.com')"
+>
+
+<img src="images1/enquiry.png" alt="" id="inquiryBtn">
+   <a href="appointment.html"><img src="images1/appointment.png" alt=""></a> 
+
+</div>
+
+
+
+</div>
+
+<!--doc1 closed-->
+
+
+<div class="doc2">
+
+
+
+
+ <div class="docimg"><img src="images1/nicholoas.png" alt=""></div>
+  <h2>Dr. Nicholas Bhusal (Topendra)</h2>
+
+<p>
+   M.D., Ph.D., Scholar in Advanced Endoscopy (USA)
+</p>    
+
+<h4>specialities</h4>
+
+<p>
+General Physician. Physiotherapy in Musculoskeletal Disorders and Sports.Endocrinology and Diabetes
+
+
+</p>
+
+<div class="icons">
+
+<img 
+  src="images1/phoneicon.png" 
+  alt="Call"
+  onclick="alert('Dr. Nicholas Bhusal\nPhone: +91 98765 43210\nEmail: nicholastopey@hospital.com')"
+>
+
+<img src="images1/enquiry.png" alt="" id="inquiryBtn2">
+   <a href="appointment.html"><img src="images1/appointment.png" alt=""></a> 
+
+</div>
+
+<!--doc2 div close-->
+
+
+
+</div>
+<div class="doc3">
+    
+ <div class="docimg"><img src="images1/Bhuwanimg.png" alt=""></div>
+
+ <h2>Dr. Bhuwan Sangroula</h2>
+
+<p>
+    M.B.B.S., M.S , Scholar in General Physician University of Toronto, Canada
+</p>    
+
+<h4>specialities</h4>
+
+<p>
+    Inspects Everything from Head to Toe.
+</p>
+
+<div class="icons">
+
+<img 
+  src="images1/phoneicon.png" 
+  alt="Call"
+  onclick="alert('Dr. Bhuwan Sangroula\nPhone: +91 98765 43210\nEmail: bh-fuckin-won@hospital.com')"
+>
+
+<img src="images1/enquiry.png" alt="" id="inquiryBtn3">
+   <a href="appointment.html"><img src="images1/appointment.png" alt=""></a> 
+
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<!--doccontainer closed-->
+
+
+
+
+
+<div class="doccontainer2">
+
+<div class="doc4"> VACANCY OPEN</div>
+<div class="doc5"> VACANCY OPEN</div>
+<div class="doc6"> VACANCY OPEN</div>
+
+
+</div>
+
+
+
+<div id="inquiryModal" style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    z-index:9999;
+">
+    <div style="
+        background:#fff;
+        width:90%;
+        max-width:400px;
+        margin:80px auto;
+        padding:20px;
+        border-radius:8px;
+    ">
+        <span onclick="closeInquiry()" style="float:right; cursor:pointer; font-size:20px;">×</span>
+
+        <h3>Patient Inquiry</h3>
+
+        <form>
+            <input type="text" placeholder="Patient Name" required style="width:100%; margin-bottom:10px;">
+            <input type="text" placeholder="Address" required style="width:100%; margin-bottom:10px;">
+            <input type="email" placeholder="Email" required style="width:100%; margin-bottom:10px;">
+            <input type="tel" placeholder="Phone" required style="width:100%; margin-bottom:10px;">
+            <textarea placeholder="Message" required style="width:100%; margin-bottom:10px;"></textarea>
+
+            <button type="submit" style="width:100%; padding:10px; background:#8e24aa; color:white; border:none;">
+                Submit
+            </button>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+     
+    <script>
+        
+        //  doctor database
+        const doctors = [
+            { name: 'Dr. John Doe', specialty: 'Cardiology' },
+            { name: 'Dr. Jane Smith', specialty: 'Neurology' },
+            { name: 'Dr. Emily Johnson', specialty: 'Pediatrics' },
+            { name:  'Dr.Bhuwan Sangroula', specialty: 'Gynologist'},
+            { name:  'Dr.Bhuwan Sangroula', specialty: 'Denstist, eye'},
+            { name:  'Dr.Nicholas Bhusal', specialty: 'Physician'},
+            { name:  'Dr.Bhuwan Sangroula', specialty: 'Physician'},
+        ];
+
+        function searchDoctors() {
+            const name = document.getElementById('searchName').value.toLowerCase();
+            const specialty = document.getElementById('searchSpecialty').value.toLowerCase();
+            const filteredDoctors = doctors.filter(doctor => 
+                doctor.name.toLowerCase().includes(name) &&
+                doctor.specialty.toLowerCase().includes(specialty)
+            );
+
+            displayDoctors(filteredDoctors);
+        }
+
+        function displayDoctors(doctors) {
+            const doctorList = document.getElementById('doctorList');
+            doctorList.innerHTML = '';
+            doctors.forEach(doctor => {
+                const doctorElement = document.createElement('div');
+                doctorElement.classList.add('doctor');
+                doctorElement.innerHTML = `
+                    <h4>${doctor.name}</h4>
+                    <p>${doctor.specialty}</p>
+                `;
+                doctorList.appendChild(doctorElement);
+            });
+
+        }
+
+        // making the inquirybtn functionable
+
+document.getElementById("inquiryBtn").addEventListener("click", function () {
+    document.getElementById("inquiryModal").style.display = "block";
+});
+
+function closeInquiry() {
+    document.getElementById("inquiryModal").style.display = "none";
+}
+
+document.getElementById("inquiryBtn2").addEventListener("click", function () {
+    document.getElementById("inquiryModal").style.display = "block";
+});
+
+function closeInquiry() {
+    document.getElementById("inquiryModal").style.display = "none";
+}
+
+
+
+document.getElementById("inquiryBtn3").addEventListener("click", function () {
+    document.getElementById("inquiryModal").style.display = "block";
+});
+
+function closeInquiry() {
+    document.getElementById("inquiryModal").style.display = "none";
+}
+
+
+
+    </script>
+</body>
+</html>
