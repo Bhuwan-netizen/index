@@ -1,0 +1,184 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    color: #000;
+}
+
+
+/* --- Navigation Styles --- */
+.main-nav {
+    position: absolute;
+    top: 40px;
+    left: 10%;
+    z-index: 100;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #000;
+    font-size: 13px;
+    font-weight: 800; /* Matching the bold headers */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: opacity 0.3s ease;
+}
+
+.nav-links a:hover {
+    opacity: 0.6;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 900px) {
+    .main-nav {
+        position: relative;
+        top: 20px;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center; /* Centers nav links on mobile */
+        margin-bottom: 20px;
+    }
+
+    .nav-links {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    /* Ensuring logo stays centered as previously fixed */
+    .logo-area {
+        position: relative;
+        top: 0;
+        right: auto;
+        margin: 20px auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+}
+
+/* Hero Section */
+.hero-page {
+    padding: 80px 10%;
+    position: relative;
+    min-height: 80vh;
+}
+
+.logo-area {
+    position: absolute;
+    top: 40px;
+    right: 10%;
+    text-align: center;
+}
+
+.logo-area img { height: 150px; }
+.logo-text { display: block; font-weight: 800; font-size: 14px; letter-spacing: 2px; }
+
+.content-wrapper { max-width: 700px; margin-top: 100px; }
+h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 10px; line-height: 1; }
+.text-block p { font-size: 1.2rem; margin-bottom: 40px; }
+
+.feature-container { display: flex; gap: 40px; }
+.feature-box { text-align: center; width: 120px; }
+.feature-icon { width: 40px; margin-bottom: 10px; }
+.feature-box p { font-size: 10px; font-weight: 800; }
+
+.feature-icon:hover{
+    cursor: pointer;
+}
+
+/* About Section */
+.aboutus {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/bgimg.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 15%;
+    text-align: center;
+    
+}
+
+
+
+
+.aboutus h3 { font-size: 24px; font-weight: 400; line-height: 1.6; }
+.small-text { font-size: 14px; margin-bottom: 20px; opacity: 0.8; }
+
+/* Solutions Section */
+.solutions-section { padding: 100px 10%; }
+.sol-top { display: flex; align-items: center; gap: 50px; margin-bottom: 50px; }
+.sol-text { flex: 1; }
+.sol-text h2 { font-size: 3rem; margin: 0; line-height: 1; }
+.sub-h { font-weight: 800; font-size: 1.2rem; margin: 20px 0; }
+.desc { font-size: 14px; line-height: 1.6; color: #444; }
+.sol-img img { width: 450px; border-radius: 4px; box-shadow: 20px 20px 0px rgba(0,0,0,0.05); }
+
+.sol-list-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.sol-list-grid ul { list-style: none; padding: 0; }
+.sol-list-grid li { font-weight: 800; font-size: 13px; margin-bottom: 8px; position: relative; padding-left: 15px; }
+.sol-list-grid li::before { content: "•"; position: absolute; left: 0; }
+
+/* Featured Work */
+.featured-work { background-color: #000; color: #fff; padding: 100px 10%; }
+.featured-work h2 { font-size: 2.5rem; }
+.featured-work p { max-width: 800px; margin-bottom: 40px; opacity: 0.8; }
+.work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+.work-grid img { width: 100%; height: 360px; object-fit: cover; }
+
+/* Testimonials */
+.testimonials { padding: 100px 10%; }
+.testimonials h2 { font-size: 3rem; line-height: 1; margin-bottom: 50px; }
+.testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.test-card { background : rgb(155, 148, 148); padding: 30px; border-radius: 8px; }
+.test-card p { font-style: italic; font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
+.client { display: flex; align-items: center; gap: 15px; }
+.client img { width: 80px; height: 80px; border-radius: 50%; background: #ddd; }
+.client span { font-size: 12px; }
+
+.client img:hover{ cursor: pointer;}
+
+/* Contact Section */
+.contact-section { background: #000; color: #fff; display: flex; min-height: 500px; }
+.contact-content { flex: 1; padding: 80px 10%; }
+.contact-content h2 { font-size: 3rem; margin-bottom: 50px; }
+.contact-info { display: flex; gap: 50px; font-size: 14px; line-height: 1.8; }
+.contact-img { flex: 1; }
+.contact-img img { width: 500px; height: 500px; object-fit: cover; }
+
+/* Responsiveness */
+@media (max-width: 900px) {
+    .sol-top, .sol-list-grid, .work-grid, .testimonial-grid, .contact-section {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+    }
+    .sol-img img { width: 100%; }
+    .hero-page { padding-top: 150px; text-align: center; }
+    .content-wrapper { margin: 0 auto; }
+    .feature-container { justify-content: center; }
+.logo-area {
+        position: relative; /* Removes the absolute positioning */
+        top: 20px;         /* Adds a little breathing room from the top */
+        right: auto;       /* Resets the right alignment */
+        margin: 0 auto 40px auto; /* Centers the div itself horizontally */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centers the image and span text inside */
+        width: 100%;
+    }
+
+}

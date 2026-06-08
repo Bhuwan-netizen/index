@@ -1,17 +1,146 @@
+/* ==========================================================================
+   GLOBAL RESETS & MODERN ACADEMIC PALETTE
+   ========================================================================== */
 body {
-  font-family: Arial;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
-  margin-top: 40px;
+  margin: 0;
+  padding: 40px 20px;
+  background-color: #f1f5f9; /* Calming, soft slate background */
+  color: #1e293b;            /* Soft charcoal text */
+  display: flex;
+  flex-direction: column;
+  align-items: center;       /* Perfectly centers the layout dynamically */
 }
 
+/* ==========================================================================
+   LAYOUT STRUCTURE (Fixes absolute positioning breaks)
+   ========================================================================== */
+.header {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 600px;          /* Matches container width for perfect alignment */
+  padding: 25px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  margin-bottom: 20px;
+  border-top: 4px solid #0f766e; /* Calming teal accent bar */
+}
+
+.container {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 600px;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+}
+
+/* ==========================================================================
+   TYPOGRAPHY HIERARCHY
+   ========================================================================== */
+.header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.header h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #0f766e; /* Academic teal accent */
+  margin-bottom: 6px;
+}
+
+.header h4 {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  letter-spacing: 0.5px;
+}
+
+.container h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+/* ==========================================================================
+   FORM CONTROLS & INTERACTIVE ELEMENTS
+   ========================================================================== */
 input, button {
-  padding: 8px;
-  margin: 5px;
-  width: 220px;
+  padding: 12px 16px;
+  margin: 8px 0;
+  width: 100%;             /* Changes fixed 220px to fluid, modern wide layout */
+  max-width: 400px;        /* Keeps field sizes clean and uniform */
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;  /* Prevents padding from breaking widths */
+  transition: all 0.2s ease;
 }
 
-button {
+input[type="text"] {
+  border: 1px solid #cbd5e1;
+  background-color: #f8fafc;
+  outline: none;
+}
+
+input[type="text"]:focus {
+  border-color: #0f766e;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.15);
+}
+
+/* Styled File Picker Target */
+input[type="file"] {
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
   cursor: pointer;
+}
+
+input[type="file"]:hover {
+  border-color: #0f766e;
+  background-color: #f0fdfa;
+}
+
+/* Primary Action Buttons */
+button {
+  background-color: #0f766e;
+  color: #ffffff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 6px -1px rgba(15, 118, 110, 0.2);
+}
+
+button:hover {
+  background-color: #115e59;
+  transform: translateY(-1px);
+}
+
+/* Distinctive styling for Logout vs Upload buttons */
+button[onclick="logout()"] {
+  background-color: transparent;
+  color: #ef4444;
+  border: 1px solid #fee2e2;
+  box-shadow: none;
+  margin-top: 20px;
+}
+
+button[onclick="logout()"]:hover {
+  background-color: #fef2f2;
+  border-color: #fca5a5;
+  transform: none;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-color: #e2e8f0;
+  margin: 30px 0;
 }
 
 ul {
@@ -19,17 +148,14 @@ ul {
   padding: 0;
 }
 
-.container{
-  position: relative;
-  top:60px;
-  background-color: burlywood;
-  width: 600px;
- right: -350px;
-}
-
-.header{
-  background-color: burlywood;
-  width: 400px;
-  position: relative;
-  left: 450px;
+/* Styling the list container items when appended by JS */
+#notesList div, #notesList li {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 14px 16px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  text-align: left;
+  font-size: 14px;
+  color: #334155;
 }

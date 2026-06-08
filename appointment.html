@@ -1,117 +1,240 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Book Appointment</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment | Clinical Medical Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           DESIGN SCHEME & FONTS (Matching find-doctor.css)
+           ========================================================================== */
+        :root {
+            --bg-main: #f4f7f6;          /* Soothing, ultra-light medical mint/teal tint */
+            --bg-card: #ffffff;
+            --primary: #14b8a6;          /* Positive, clean healing teal color */
+            --primary-hover: #0d9488;
+            --primary-light: #f0fdfa;
+            --text-main: #1f2937;        /* Soft charcoal text */
+            --text-muted: #6b7280;
+            --border-color: #e5e7eb;
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-<style>
-.container{
-display:flex ;
-justify-content: center;
-flex-wrap: wrap;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
 
-h2{
-    text-align: center;
-    font-size: 32px;
-}
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            padding: 40px 20px;
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
+        /* Page Header Trims */
+        h2 {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 30px;
+            letter-spacing: -0.5px;
+        }
 
-</style>
+        /* Container Layout centering framework */
+        .container {
+            width: 100%;
+            max-width: 520px;
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(0, 0, 0, 0.01);
+        }
 
+        /* ==========================================================================
+           FORM FIELD ELEMENT STYLING
+           ========================================================================== */
+        #appointmentForm {
+            display: flex;
+            flex-direction: column;
+        }
 
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        /* Standardizing Inputs and Dropdowns */
+        select, input[type="date"], input[type="time"] {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 14px;
+            color: var(--text-main);
+            outline: none;
+            background-color: #f9fafb;
+            transition: var(--transition);
+            -webkit-appearance: none; /* Removes default browser styling quirks */
+            appearance: none;
+        }
+
+        /* Add standard layout indicator drops inside custom dropdown components */
+        select {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 16px;
+            padding-right: 40px;
+        }
+
+        select:focus, input:focus {
+            border-color: var(--primary);
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15);
+        }
+
+        /* Submit Booking Button Element */
+        button[type="submit"] {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(20, 184, 166, 0.2);
+        }
+
+        button[type="submit"]:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(20, 184, 166, 0.3);
+        }
+
+        /* Simple link layout fallback if they want to navigate backwards */
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 13px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .back-link:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 480px) {
+            body { padding: 20px 16px; }
+            .container { padding: 25px 20px; }
+        }
+    </style>
 </head>
-
-
-
 <body>
 
+    <div class="container">
+        <h2>Book an Appointment</h2>
+        
+        <form id="appointmentForm" onsubmit="handleFormSubmit(event)">
 
-<h2>Welcome to our Portal. Book an Appointment</h2>
-<div class="container">
+            <div class="form-group">
+                <label for="problem">What medical concern are you facing?</label>
+                <select id="problem" onchange="loadDoctors()" required>
+                    <option value="">-- Select Problem Type --</option>
+                    <option value="heart">Heart Problem</option>
+                    <option value="skin">Skin Problem</option>
+                    <option value="eye">ENT / Eye Problem</option>
+                    <option value="Diet">Diet and Nutrition</option>
+                    <option value="Dental">Dental Problem</option>
+                    <option value="overall">General Physician</option>
+                </select>
+            </div>
 
+            <div class="form-group">
+                <label for="doctor">Select Preferred Medical Expert</label>
+                <select id="doctor" required>
+                    <option value="">-- Select Doctor --</option>
+                </select>
+            </div>
 
+            <div class="form-group">
+                <label for="date">Preferred Appointment Date</label>
+                <input type="date" id="date" required>
+            </div>
 
+            <div class="form-group">
+                <label for="time">Preferred Time Slot</label>
+                <input type="time" id="time" required>
+            </div>
 
+            <button type="submit">Confirm Secure Booking</button>
+        </form>
 
-<form id="appointmentForm">
+        <a href="find-doctor.html" class="back-link">&larr; Return to Doctor Profiles</a>
+    </div>
 
-    <!-- Problem selection -->
-    <label>What problem are you facing?</label><br>
-    <select id="problem" onchange="loadDoctors()" required>
-        <option value="">-- Select Problem --</option>
-        <option value="heart">Heart Problem</option>
-        <option value="skin">Skin Problem</option>
-        <option value="eye">ENT Problem</option>
-        <option value="Diet">Diet and Nutrition</option>
-        <option value="Dental">Dental Problem</option>
-        <option value="overall">Physician</option>
-        <option value="Bones">Orthopeadic</option>
-        <option value="urine">Urologist</option>
-    </select><br><br>
+    <script>
+        function loadDoctors() {
+            const problem = document.getElementById("problem").value;
+            const doctorSelect = document.getElementById("doctor");
 
-    <!-- Doctor selection -->
-    <label>Select Doctor</label><br>
-    <select id="doctor" required>
-        <option value="">-- Select Doctor --</option>
-    </select><br><br>
+            // Reset dynamic selector state
+            doctorSelect.innerHTML = '<option value="">-- Select Doctor --</option>';
 
-    <!-- Date -->
-    <label>Appointment Date</label><br>
-    <input type="date" required><br><br>
+            const doctors = {
+                heart: ["Dr. Sharma (Cardiologist)", "Dr. Mehta (Heart Specialist)"],
+                skin: ["Dr. Roy (Dermatologist)", "Dr. Khan (Skin Specialist)"],
+                eye: ["Dr. Verma (Ophthalmologist)", "Dr. Patel (Eye Specialist)"],
+                Diet: ["Dr. Bhuwan (Dietitian)"],
+                Dental: ["Dr. Bhuwan (Dentist)"],
+                overall: ["Dr. Bhuwan (General Physician)"],
+            };
 
-    <!-- Time -->
-    <label>Time</label><br>
-    <input type="time" required><br><br>
+            if (doctors[problem]) {
+                doctors[problem].forEach(doc => {
+                    let option = document.createElement("option");
+                    option.text = doc;
+                    option.value = doc;
+                    doctorSelect.add(option);
+                });
+            }
+        }
 
-    <button type="submit">Book Appointment</button>
-</form>
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const doctorName = document.getElementById("doctor").value;
+            const dateValue = document.getElementById("date").value;
+            const timeValue = document.getElementById("time").value;
 
-
-</div>
-
-
-
-
-
-
-<script >
-
-
-
-function loadDoctors() {
-    const problem = document.getElementById("problem").value;
-    const doctorSelect = document.getElementById("doctor");
-
-    doctorSelect.innerHTML = '<option value="">-- Select Doctor --</option>';
-
-    const doctors = {
-        heart: ["Dr. Sharma (Cardiologist)", "Dr. Mehta (Heart Specialist)"],
-        skin: ["Dr. Roy (Dermatologist)", "Dr. Khan (Skin Specialist)"],
-        eye: ["Dr. Verma (Ophthalmologist)", "Dr. Patel (Eye Specialist)"],
-        Diet: ["Dr. Bhuwan (Dietrician)"],
-        Dental: ["Dr. Bhuwan (Dentist)"],
-        overall: ["Dr. Bhuwan (General Physician)"],
-    };
-
-    if (doctors[problem]) {
-        doctors[problem].forEach(doc => {
-            let option = document.createElement("option");
-            option.text = doc;
-            option.value = doc;
-            doctorSelect.add(option);
-        });
-    }
-}
-
-
-
-
-
-
-
-
-
-</script>
+            alert(`Success! Your appointment with ${doctorName} has been recorded for ${dateValue} at ${timeValue}.`);
+        }
+    </script>
 
 </body>
 </html>

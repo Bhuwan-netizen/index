@@ -1,86 +1,287 @@
-.doccontainer{
+/* ==========================================================================
+   DESIGN SCHEME & FONTS
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg-main: #f4f7f6;          /* Soothing, ultra-light medical mint/teal tint */
+    --bg-card: #ffffff;
+    --primary: #14b8a6;          /* Positive, clean healing teal color */
+    --primary-hover: #0d9488;
+    --primary-light: #f0fdfa;
+    --text-main: #1f2937;        /* Soft charcoal (never use pure black for text) */
+    --text-muted: #6b7280;
+    --border-color: #e5e7eb;
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    padding: 40px 20px;
+    line-height: 1.5;
+}
+
+/* Page Header */
+h1.page-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin: 40px 0 20px 0;
+}
+
+/* ==========================================================================
+   SEARCH CONTAINER
+   ========================================================================== */
+.search-container {
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
     display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    position: relative;
-    top: 40px;
-    /* border: 3px solid #7f5cc1; */
+    gap: 15px;
+    align-items: center;
 }
 
-.doc1 , .doc2 , .doc3, .doc4 , .doc5, .doc6{
-   
-    height :396px;
-    width: 300px;
-    border: 2px solid black;
+.search-container input {
+    flex: 1;
+    padding: 14px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+    background-color: #f9fafb;
+    transition: var(--transition);
 }
 
-.docimg{
-    display: flex;
-    justify-content: center;
+.search-container input:focus {
+    border-color: var(--primary);
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.15);
 }
 
-.doc1 img{
-    height: 100px;
+.search-container button {
+    padding: 14px 28px;
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: var(--transition);
 }
 
-.doc2 img{
-    height: 94px;
-  
+.search-container button:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
 }
 
-.doc3 img{
-    height: 157px;
+/* Dynamic Live Filter Results List */
+#doctorList {
+    max-width: 700px;
+    margin: -25px auto 40px auto;
 }
 
-
-.doccontainer2{
-     display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    position: relative;
-    top: 80px;
-
-}
-
-.icons{
+.doctor {
+    background: var(--bg-card);
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border-left: 4px solid var(--primary);
+    box-shadow: var(--shadow-sm);
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    align-items: center;
 }
 
+.doctor h4 { font-size: 16px; color: var(--text-main); }
+.doctor p { font-size: 13px; color: var(--text-muted); }
 
-
- .icons img{
-    height: 38px;
- }
-
- .icons img:hover{
-    cursor: pointer;
- }
-
- 
- .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    z-index: 9999;
+/* ==========================================================================
+   DOCTORS CARDS MATRIX
+   ========================================================================== */
+.doccontainer, .doccontainer2 {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    padding-bottom: 40px;
 }
 
-.modal-content {
-    background: #fff;
-    width: 300px;
-    margin: 120px auto;
-    padding: 20px;
-    border-radius: 8px;
+.doccontainer2 {
+    margin-top: 20px;
+}
+
+/* Reusable Doctor Cards styling */
+.doc1, .doc2, .doc3, .doc4, .doc5, .doc6 {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 30px;
+    border: 1px solid rgba(0,0,0,0.02);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+    min-height: 420px;
+}
+
+.doc1:hover, .doc2:hover, .doc3:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Doctor Image handling Wrapper */
+.docimg {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.docimg img {
+    height: 110px;
+    width: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: var(--primary-light);
+    border: 3px solid #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* Text Hierarchy */
+.doccontainer h2 {
+    font-size: 20px;
+    font-weight: 700;
     text-align: center;
+    color: var(--text-main);
+    margin-bottom: 8px;
 }
 
-.close {
-    float: right;
+.doccontainer p {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.doccontainer h4 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.75px;
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 4px;
+    font-weight: 700;
+}
+
+/* Push navigation interaction bar to the bottom container line */
+.icons {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.icons img {
+    height: 36px;
+    width: 36px;
+    padding: 8px;
+    background: var(--primary-light);
+    border-radius: 50%;
+    transition: var(--transition);
     cursor: pointer;
+}
+
+.icons img:hover {
+    background: var(--primary);
+    filter: brightness(0) invert(1); /* Smooth inversion effect for color changing icons */
+    transform: scale(1.1);
+}
+
+/* Vacancy Card Slots styling */
+.doc4, .doc5, .doc6 {
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #cbd5e1;
+    background: rgba(255, 255, 255, 0.5);
+    color: #94a3b8;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 1px;
+    min-height: 200px;
+}
+
+/* ==========================================================================
+   INQUIRY MODAL POPUP
+   ========================================================================== */
+.modal-overlay {
+    background: rgba(15, 23, 42, 0.4) !important;
+    backdrop-filter: blur(4px);
+    transition: var(--transition);
+}
+
+.modal-card {
+    background: #ffffff !important;
+    border-radius: 16px !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15) !important;
+    border: none !important;
+    overflow: hidden;
+}
+
+.modal-card h3 {
     font-size: 22px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 20px;
+}
+
+.modal-card input, .modal-card textarea {
+    border: 1px solid var(--border-color) !important;
+    background: #f9fafb !important;
+    border-radius: 8px !important;
+    padding: 12px 14px !important;
+    font-size: 14px !important;
+    outline: none !important;
+    transition: var(--transition) !important;
+}
+
+.modal-card input:focus, .modal-card textarea:focus {
+    border-color: var(--primary) !important;
+    background: #fff !important;
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1) !important;
+}
+
+.modal-card button[type="submit"] {
+    background: var(--primary) !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    transition: var(--transition) !important;
+    cursor: pointer;
+}
+
+.modal-card button[type="submit"]:hover {
+    background: var(--primary-hover) !important;
+}
+
+/* Responsive adjustment rules */
+@media(max-width: 768px) {
+    .search-container { flex-direction: column; }
+    .search-container input, .search-container button { width: 100%; }
 }
