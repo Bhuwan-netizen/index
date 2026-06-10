@@ -108,6 +108,18 @@ nav ul li a:hover, nav ul li a.active {
     cursor: pointer;
 }
 
+.profileimg img{
+     position: relative;
+    height: 444px;
+    border-radius: 12px; /* reduced corners */
+    overflow: hidden;
+}
+
+
+
+
+
+
 /* ==========================================================================
    HERO SECTION
    ========================================================================== */
