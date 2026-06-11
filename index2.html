@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Ledger App</title>
+    <style>
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
+        body { background-color: #f4f6f9; color: #333; display: flex; }
+        
+        /* Sidebar Styles */
+        .sidebar { width: 240px; background: #2c3e50; height: 100vh; padding: 20px 0; position: fixed; }
+        .sidebar h2 { color: #fff; text-align: center; margin-bottom: 30px; font-size: 20px; }
+        .sidebar button { width: 100%; border: none; background: none; color: #a0aec0; padding: 15px 20px; text-align: left; font-size: 16px; cursor: pointer; transition: 0.2s; }
+        .sidebar button:hover, .sidebar button.active { background: #34495e; color: #fff; border-left: 4px solid #3498db; }
+        
+        /* Main Content Container */
+        .main-content { margin-left: 240px; padding: 40px; width: calc(100% - 240px); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        h1 { margin-bottom: 20px; color: #2c3e50; }
+        form { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        form input, form select, form button { padding: 10px; border: 1px solid #cbd5e0; border-radius: 4px; font-size: 14px; }
+        form button { background: #27ae60; color: white; border: none; font-weight: bold; cursor: pointer; }
+        form button:hover { background: #219653; }
+        
+        /* Table Layouts */
+        table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #edf2f7; }
+        th { background-color: #f7fafc; color: #4a5568; font-weight: 600; }
+        tr:hover { background-color: #f8fafc; }
+
+@media (max-width: 768px) {
+            body { flex-direction: column; }
+
+            /* Turn Sidebar into a Top Header/Navigation Bar */
+            .sidebar { width: 100%; height: auto; position: static; padding: 10px 0; display: flex; flex-direction: column; align-items: center; }
+            .sidebar h2 { margin-bottom: 10px; font-size: 18px; }
+            .sidebar-menu { display: flex; width: 100%; overflow-x: auto; scrollbar-width: none; }
+            .sidebar-menu::-webkit-scrollbar { display: none; } /* Hide mobile scrollbar */
+            .sidebar button { padding: 12px 15px; text-align: center; justify-content: center; font-size: 14px; white-space: nowrap; border-left: none; border-bottom: 3px solid transparent; }
+            .sidebar button:hover, .sidebar button.active { background: #34495e; border-left: none; border-bottom: 3px solid #3498db; }
+
+            /* Main Content takes full width */
+            .main-content { margin-left: 0; width: 100%; padding: 20px 15px; }
+            form { grid-template-columns: 1fr; gap: 12px; } /* Stack form inputs vertically */
+
+            /* Force standard tables to behave like stacking responsive CARDS */
+            table, thead, tbody, th, td, tr { display: block; }
+            thead tr { position: absolute; top: -9999px; left: -9999px; } /* Hide table headers visually */
+            tr { background: #fff; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid #edf2f7; padding: 10px; }
+            td { border: none; border-bottom: 1px solid #edf2f7; position: relative; padding-left: 45%; text-align: right; font-size: 14px; }
+            td:last-child { border-bottom: none; }
+            
+            /* Inject column headers dynamically using data-label attributes */
+            td::before { content: attr(data-label); position: absolute; left: 15px; width: 40%; text-align: left; font-weight: 600; color: #4a5568; }
+            
+            /* Button styling inside card views */
+            td button { width: auto; display: inline-block; padding: 6px 15px; font-size: 14px; }
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <h2>Ledger App</h2>
+        <button class="nav-btn active" onclick="switchTab('employees')">📋 Employees Info</button>
+        <button class="nav-btn" onclick="switchTab('shifts')">⏱️ Shifts</button>
+        <button class="nav-btn" onclick="switchTab('attendance')">📅 Attendance</button>
+        <button class="nav-btn" onclick="switchTab('payroll')">💰 Payroll Tracker</button>
+    </div>
+
+    <!-- Main Views -->
+    <div class="main-content">
+        
+      <div id="employees-tab" class="tab-content active">
+    <h1>Employee Information</h1>
+    <form id="employee-form">
+        <input type="text" id="emp-name" placeholder="Full Name" required>
+        <input type="text" id="emp-address" placeholder="Address" required>
+        <input type="text" id="emp-phone" placeholder="Phone Number" required>
+        <input type="number" id="emp-rate" placeholder="Hourly Rate ($)" step="0.01" required>
+        <button type="submit">Add Employee</button>
+    </form>
+    <table>
+        <thead>
+            <tr><th>ID</th><th>Name</th><th>Address</th><th>Phone</th><th>Hourly Rate</th><th>Actions</th></tr>
+        </thead>
+        <tbody id="employees-table-body"></tbody>
+    </table>
+</div>
+
+        <!-- 2. Shifts Tab -->
+        <div id="shifts-tab" class="tab-content">
+            <h1>Shift Schedules</h1>
+            <form id="shift-form">
+                <select id="shift-emp-select" required><option value="">Select Employee</option></select>
+                <input type="text" id="shift-name" placeholder="Shift Name (e.g. Day, Night)" required>
+                <input type="time" id="shift-start" required>
+                <input type="time" id="shift-end" required>
+                <button type="submit">Assign Shift</button>
+            </form>
+            <table>
+                <thead>
+                    <tr><th>Employee</th><th>Shift Name</th><th>Start Time</th><th>End Time</th></tr>
+                </thead>
+                <tbody id="shifts-table-body"></tbody>
+            </table>
+        </div>
+
+        <!-- 3. Attendance Tab -->
+        <div id="attendance-tab" class="tab-content">
+            <h1>Attendance Log</h1>
+            <form id="attendance-form">
+                <select id="attn-emp-select" required><option value="">Select Employee</option></select>
+                <input type="date" id="attn-date" required>
+                <select id="attn-status" required>
+                    <option value="Present">Present</option>
+                    <option value="Absent">Absent</option>
+                </select>
+                <input type="number" id="attn-hours" placeholder="Hours Worked" step="0.1" required>
+                <button type="submit">Log Attendance</button>
+            </form>
+            <table>
+                <thead>
+                    <tr><th>Date</th><th>Employee</th><th>Status</th><th>Hours Worked</th></tr>
+                </thead>
+                <tbody id="attendance-table-body"></tbody>
+            </table>
+        </div>
+
+        <!-- 4. Payroll Tracking Tab -->
+        <div id="payroll-tab" class="tab-content">
+            <h1>Payroll Summary</h1>
+            <table>
+                <thead>
+                    <tr><th>ID</th><th>Employee Name</th><th>Hourly Rate</th><th>Total Hours Worked</th><th>Calculated Pay</th></tr>
+                </thead>
+                <tbody id="payroll-table-body"></tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- Frontend Scripting Logic -->
+    <script>
+        // Tab switching controller
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+            
+            document.getElementById(`${tabId}-tab`).classList.add('active');
+            event.target.classList.add('active');
+            
+            // Load fresh data when hitting specific tabs
+            if (tabId === 'employees') loadEmployees();
+            if (tabId === 'shifts') { loadEmployeesDropdowns(); loadShifts(); }
+            if (tabId === 'attendance') { loadEmployeesDropdowns(); loadAttendance(); }
+            if (tabId === 'payroll') loadPayroll();
+        }
+
+// Fetch and display lists
+function loadEmployees() {
+    fetch('/api/employees')
+        .then(res => res.json())
+        .then(data => {
+            const tbody = document.getElementById('employees-table-body');
+            // Clean dynamic mapping with string literals
+            tbody.innerHTML = data.map(emp => `
+                <tr>
+                    <td>${emp.id}</td>
+                    <td>${emp.name}</td>
+                    <td>${emp.address}</td>
+                    <td>${emp.phone}</td>
+                    <td>$${emp.hourly_rate}</td>
+                    <td>
+                        <button onclick="deleteEmployee(${emp.id})" style="background:#e74c3c; color:white; border:none; padding:5px 10px; border-radius:4px; cursor:pointer;">🗑️ Delete</button>
+                    </td>
+                </tr>
+            `).join('');
+        })
+        .catch(err => console.error("Error loading employees:", err));
+}
+
+// Separate Delete Function Logic
+function deleteEmployee(id) {
+    if (confirm("Are you sure you want to delete this employee? This will clear all their shifts, attendance logs, and payroll balances permanently!")) {
+        fetch(`/api/employees/${id}`, {
+            method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+            alert(data.message);
+            loadEmployees(); // Refresh the directory instantly
+        })
+        .catch(err => console.error("Error deleting employee:", err));
+    }
+}
+
+     
+function deleteEmployee(id) {
+    if (confirm("Are you absolute sure you want to delete this employee? This will clear all their shifts, attendance logs, and payroll balances permanently!")) {
+        fetch(`/api/employees/${id}`, {
+            method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+            alert(data.message);
+            loadEmployees(); // Reload the current view instantly
+        })
+        .catch(err => console.error("Error deleting employee:", err));
+    }
+}
+
+        function loadEmployeesDropdowns() {
+            fetch('/api/employees').then(res => res.json()).then(data => {
+                const options = `<option value="">Select Employee</option>` + data.map(emp => `<option value="${emp.id}">${emp.name}</option>`).join('');
+                document.getElementById('shift-emp-select').innerHTML = options;
+                document.getElementById('attn-emp-select').innerHTML = options;
+            });
+        }
+
+        function loadShifts() {
+            fetch('/api/shifts').then(res => res.json()).then(data => {
+                document.getElementById('shifts-table-body').innerHTML = data.map(s => `<tr><td>${s.name}</td><td>${s.shift_name}</td><td>${s.start_time}</td><td>${s.end_time}</td></tr>`).join('');
+            });
+        }
+
+        function loadAttendance() {
+            fetch('/api/attendance').then(res => res.json()).then(data => {
+                document.getElementById('attendance-table-body').innerHTML = data.map(a => `<tr><td>${a.date.split('T')[0]}</td><td>${a.name}</td><td>${a.status}</td><td>${a.hours_worked} hrs</td></tr>`).join('');
+            });
+        }
+
+        function loadPayroll() {
+            fetch('/api/payroll').then(res => res.json()).then(data => {
+                document.getElementById('payroll-table-body').innerHTML = data.map(p => `<tr><td>${p.id}</td><td>${p.name}</td><td>$${p.hourly_rate}</td><td>${p.total_hours} hrs</td><td><strong>$${p.earnings.toFixed(2)}</strong></td></tr>`).join('');
+            });
+        }
+
+        // Form submission handlers
+        document.getElementById('employee-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const body = {
+                name: document.getElementById('emp-name').value,
+                address: document.getElementById('emp-address').value,
+                phone: document.getElementById('emp-phone').value,
+                hourly_rate: document.getElementById('emp-rate').value
+            };
+            fetch('/api/employees', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body) })
+            .then(() => { this.reset(); loadEmployees(); });
+        });
+
+        document.getElementById('shift-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const body = {
+                employee_id: document.getElementById('shift-emp-select').value,
+                shift_name: document.getElementById('shift-name').value,
+                start_time: document.getElementById('shift-start').value,
+                end_time: document.getElementById('shift-end').value
+            };
+            fetch('/api/shifts', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body) })
+            .then(() => { this.reset(); loadShifts(); });
+        });
+
+        document.getElementById('attendance-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const body = {
+                employee_id: document.getElementById('attn-emp-select').value,
+                date: document.getElementById('attn-date').value,
+                status: document.getElementById('attn-status').value,
+                hours_worked: document.getElementById('attn-hours').value
+            };
+            fetch('/api/attendance', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body) })
+            .then(() => { this.reset(); loadAttendance(); });
+        });
+
+        // Initialize display
+        loadEmployees();
+    </script>
+</body>
+</html>
