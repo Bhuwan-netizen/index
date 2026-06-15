@@ -313,6 +313,15 @@ section { padding: 100px 0; }
     transform: translateY(-2px);
 }
 
+.services {
+    display: flex;
+   justify-content: center;
+    
+}
+
+
+
+
 /* ==========================================================================
    EXPERIENCE TAB SYSTEM
    ========================================================================== */
@@ -355,6 +364,72 @@ section { padding: 100px 0; }
 
 .tab-panel { display: none; }
 .tab-panel.active { display: block; animation: panelFade 0.4s ease forwards; }
+
+
+/* ==========================================================================
+   SERVICES GRID LAYOUT
+   ========================================================================== */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.service-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 35px 30px;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.service-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 255, 204, 0.05);
+    border: 1px solid rgba(0, 255, 204, 0.15);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    transition: var(--transition);
+}
+
+.service-icon-wrapper i {
+    font-size: 20px;
+    color: var(--accent);
+}
+
+.service-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.service-card p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Hover States */
+.service-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0, 255, 204, 0.25);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 20px rgba(0, 255, 204, 0.05);
+}
+
+.service-card:hover .service-icon-wrapper {
+    background: var(--accent);
+}
+
+.service-card:hover .service-icon-wrapper i {
+    color: var(--bg-main);
+}
 
 @keyframes panelFade {
     from { opacity: 0; transform: translateX(10px); }
