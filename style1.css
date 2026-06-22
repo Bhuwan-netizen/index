@@ -1,4 +1,4 @@
-   /* ==========================================================================
+/* ==========================================================================
    CSS CORE CONSTANTS & SCHEME
    ========================================================================== */
 :root {
@@ -316,7 +316,6 @@ section { padding: 100px 0; }
 
 
 
-
 /* ==========================================================================
    EXPERIENCE TAB SYSTEM
    ========================================================================== */
@@ -496,6 +495,116 @@ section { padding: 100px 0; }
     transform: translateY(-6px);
     border-color: rgba(0, 255, 204, 0.25);
     box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 20px rgba(0, 255, 204, 0.05);
+}
+
+
+
+/* ==========================================================================
+   RESEARCH & ARTICLES SECTION LAYOUT
+   ========================================================================== */
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 30px;
+}
+
+.research-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 35px;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle accent line on top of research items to differentiate them from project folders */
+.research-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 3px;
+    background: transparent;
+    transition: var(--transition);
+}
+
+.research-meta {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+}
+
+.research-date {
+    color: var(--text-dark);
+}
+
+.research-category {
+    color: var(--accent);
+}
+
+.research-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.research-card p {
+    color: var(--text-secondary);
+    font-size: 15px;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+.research-footer {
+    display: flex;
+    align-items: center;
+}
+
+.read-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+}
+
+/* Interactivity & Hover Engine */
+.research-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0, 255, 204, 0.25);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 20px rgba(0, 255, 204, 0.05);
+}
+
+.research-card:hover::before {
+    background: var(--accent);
+}
+
+.research-card:hover .read-link {
+    color: var(--accent);
+}
+
+.research-card:hover .read-link i {
+    transform: translateX(4px);
+    transition: var(--transition);
+}
+
+/* Responsive adjustment for compact screens */
+@media (max-width: 768px) {
+    .research-grid {
+        grid-template-columns: 1fr;
+    }
+    .research-card {
+        padding: 25px;
+    }
 }
 
 /* ==========================================================================
