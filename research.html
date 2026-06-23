@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research and Analysis</title>
+</head>
+<body>
+    <style>
+:root {
+    --bg-main: #0a0a0f;
+    --bg-surface: #12121a;
+    --bg-card: #161622;
+    --accent: #00ffcc;           /* Cyberpunk neon teal for clean tech vibe */
+    --accent-glow: rgba(0, 255, 204, 0.3);
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --text-dark: #6b7280;
+    --border-color: rgba(255, 255, 255, 0.05);
+    --font-heading: 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    line-height: 1.6;
+    font-size: 20px;
+}
+
+
+h1{
+    color: var(--accent);
+}
+h3{
+    color: var(--accent);
+}
+
+.research-card {
+    background: var(--bg-surface);
+    border: 3px solid red;
+    border-radius: 12px;
+    padding: 35px;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.research-card2{
+    position: relative;
+    top: 30px;
+   background: var(--bg-surface);
+    border: 3px solid red;
+    border-radius: 16px;
+    padding: 35px;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;   
+}
+
+
+
+    </style>
+
+<h1>Research and Analysis Page</h1>
+
+<p style="font-size: 22px;">This Page Contains my progressive research and analysis. I will be
+    updating my findings in this section.
+</p>
+
+<div class="research-card">
+<h3>Advanced Port Scanner: A beginner Cybersecurity Tool</h3>
+
+<p>Hello Cyber Geeks. I am a Cybersecurity Enthusiast and a learner. I love learning about Cybersecurity and 
+    updating myself with modern cyber tools. Most of you have known about Nmap or used it for port 
+    scanning. It is one of the most advanced and handytool in Cybersecurity.
+</p>
+
+<p>While i was a learner, i encountered a lot of confusion while using N-map.
+    The black screen with white text and number on it was really frying my brain.
+    So, for the ease i decided to make the n-map scan easy and more efficient by developing 
+    a simple port scanner tool. This tool i have developed is a cybersecurity tool which helps 
+    to exploit the target more efficiently and tells us which attack we should run . It analyzes a N-map scan
+    and further gives us detailed information about the target, ports and attacks.
+    An AI-assisted vulnerability assessment tool that analyzes Nmap scan results and provides detailed penetration testing recommendations.   
+</p>
+
+</div>
+
+
+<div class="research-card2">
+        <span style="color: #00ffcc; font-size: 30px; font-weight: bold;">Features:</span> <br> <br>
+
+*Automated Risk Assessment: Analyzes each open port and assigns risk levels (Low/Medium/High/Critical) <br> <br>
+*Intelligent Attack Recommendations: Provides specific exploitation techniques with tools and success likelihood <br> <br>
+*CVE Mapping: Links discovered services to known CVEs <br> <br>
+*Priority-Based Analysis: Ranks attack vectors by success probability and impact <br> <br>
+*Multiple Output Formats: Text reports and JSON export <br> <br>
+*Confidence Scoring: Provides confidence levels for each assessment <br> <br>
+*NSE Script Analysis: Incorporates Nmap NSE script output into analysis <br> <br>
+    </p>
+
+    </div>
+
+</body>
+</html>
