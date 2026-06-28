@@ -15,7 +15,13 @@
 
     <header>
         <nav class="container">
-            <!-- <div class="logo">dev<span>.</span>bhuwan</div> -->
+            <div class="logo-area">
+                <div class="logo">dev<span>.</span>bhuwan</div>
+                <button id="theme-toggle" aria-label="Toggle Theme">
+                    <i class="fas fa-moon" id="theme-icon">MODE</i>
+                </button>
+            </div>
+
             <ul id="nav-menu">
                 <li><a href="#hero" class="active">// home</a></li>
                 <li><a href="#about">// about</a></li>
@@ -24,7 +30,6 @@
                 <li><a href="#projects">// projects</a></li>
                 <li><a href="#research">// research</a></li>
                 <li><a href="#contact">// contact</a></li>
-                
                 <i class="fas fa-times menu-close" onclick="closeMenu()"></i>
             </ul>
             <i class="fas fa-bars menu-open" onclick="openMenu()"></i>
@@ -34,8 +39,8 @@
     <section id="hero" class="container">
         <div class="hero-content">
             <h1>Welcome to my digital <br><span class="glow-text">Architecture.</span></h1>
-            <p class="hero-subtitle">I am a Intermediate Full-Stack Software Developer and Cybersecurity Enthusiast specializing in high-performance web applications, robust design and clean code. <br> 
-            I turn complex problems into digital architecture with clean code and design</p>
+            <p class="hero-subtitle">I am an Intermediate Full-Stack Software Developer and Cybersecurity Enthusiast specializing in high-performance web applications, robust design, and clean code. <br> 
+            I turn complex problems into digital architecture with clean code and design.</p>
             
             <div class="hero-cta">
                 <a href="#projects" class="btn btn-primary">View Projects <i class="fa-solid fa-arrow-right"></i></a>
@@ -43,42 +48,10 @@
             </div>
         </div>
 
-<div class="profileimg">
-
-
-
-<img src="images/photo1.png" alt="">
-  
-<h4 style="color: red; font-size: 24px;">"Not the average developer"</h4>
-
-
-
-
-</div>
-
-
-
-
-
-
-
-        <!-- <div class="hero-visual">
-            <div class="terminal-card">
-                <div class="terminal-header">
-                    <span class="dot red"></span>
-                    <span class="dot yellow"></span>
-                    <span class="dot green"></span>
-                </div>
-                <div class="terminal-body">
-                    <p class="code-line"><span class="code-keyword">const</span> developer = <span class="code-string">"Bhuwan"</span>;</p>
-                    <p class="code-line"><span class="code-keyword">let</span> skills = [<span class="code-string">"React"</span>, <span class="code-string">"Node.js"</span>, <span class="code-string">"JavaScript"</span>,  <span class="code-string">"Cybersecurity"</span>];</p>
-                    <p class="code-line"><span class="code-keyword">function</span> <span class="code-fn">optimize</span>() { return true; }</p>
-                    <p class="code-line-comment">// Status: Compiling success...</p>
-                </div>
-            </div>
-        </div> -->
-
-
+        <div class="profileimg">
+            <img src="images/photo1.png" alt="Bhuwan profile">
+            <h4 class="hero-tagline">"Not the average developer"</h4>
+        </div>
     </section>
 
     <section id="about" class="container">
@@ -87,30 +60,24 @@
         </div>
         <div class="about-grid">
             <div class="about-text">
-                <p>Hello! I build deep-tech solutions for the modern web. My journey engineering digital products bridges the gap between clean aesthetics and simple backend engineering. Frontend engineering
-                    is my speciality while i am still mastering backend by learning new modern technologies.
-                </p>
-                <p>I am currently Pursuing Bacherlor's degree in Computer Engineering.</p>
-                <p>I am a Learner with huge Interest in Cybersecurity. I specialize in Penetration testing and vlunerability assessment using modern 
-                    Cybersecurity tools and virtual environment.
-                </p>
+                <p>Hello! I build deep-tech solutions for the modern web. My journey engineering digital products bridges the gap between clean aesthetics and simple backend engineering. Frontend engineering is my specialty while I am still mastering backend by learning new modern technologies.</p>
+                <p>I am currently pursuing a Bachelor's degree in Computer Engineering.</p>
+                <p>I am a learner with a huge interest in Cybersecurity. I specialize in penetration testing and vulnerability assessment using modern cybersecurity tools and virtual environments.</p>
                 
                 <h3 class="skills-heading">Tech Stack</h3>
                 <div class="skills-grid">
                     <div class="skill-item"><i class="fab fa-react"></i> React.js, HTML5, CSS3</div>
-                    <div class="skill-item"><i class="fab fa-js"></i> JavaScript, Python , C, C++</div>
+                    <div class="skill-item"><i class="fab fa-js"></i> JavaScript, Python, C, C++</div>
                     <div class="skill-item"><i class="fab fa-node-js"></i> Node.js+Express</div>
-                    <div class="skill-item"><i class="fa-solid fa-database"></i>MongoDB, Firebase,Supabase, SQLite, SQL</div>
-                    <div class="skill-item"><i class="fab fa-shield"></i> Cybersecurity & Pen Testing</div>
+                    <div class="skill-item"><i class="fa-solid fa-database"></i> MongoDB, Firebase, Supabase, SQLite, SQL</div>
+                    <div class="skill-item"><i class="fa-solid fa-shield-halved"></i> Cybersecurity & Pen Testing</div>
                     <div class="skill-item"><i class="fa-solid fa-terminal"></i> Cybersecurity tools & more</div>
                 </div>
             </div>
         </div>
     </section>
 
-
-
-<section id="services" class="container">
+    <section id="services" class="container">
         <div class="section-title">
             <h2>Services I Offer</h2>
         </div>
@@ -143,13 +110,11 @@
                 <div class="service-icon-wrapper">
                     <i class="fa-solid fa-cubes"></i>
                 </div>
-                <h3>Freelancing services</h3>
-                <p>Engineering customized functional softwares and minimalist logic blocks.</p>
+                <h3>Freelancing Services</h3>
+                <p>Engineering customized functional software and minimalist logic blocks.</p>
             </div>
         </div>
     </section>
-
-
 
     <section id="experience" class="container">
         <div class="section-title">
@@ -167,7 +132,7 @@
                     <ul>
                         <li>Mainly on-call and part-time job.</li>
                         <li>Architected core dashboard infrastructure, and assisted senior engineers.</li>
-                        <li>Designed software and did front-end work. </li>
+                        <li>Designed software and did front-end work.</li>
                         <li>Maintained Client Websites.</li>
                     </ul>
                 </div>
@@ -190,55 +155,46 @@
         </div>
 
         <div class="projects-grid">
-                <div class="project-card">
+            <div class="project-card">
                 <div class="project-header">
                     <i class="fa-regular fa-folder project-icon"></i>
                     <div class="project-links">
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="index2.html"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a href="#" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                        <a href="index2.html" aria-label="Project Link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </div>
                 </div>
                 <h3>Employee Ledger App</h3>
-                <p>A Simple web app which tracks down the employee record in an organization. You cannot add records to the app, it  runs locally using local database.</p>
-                <p></p>
+                <p>A Simple web app which tracks down the employee record in an organization. Runs locally using a local database setup.</p>
                 <div class="project-tags">
-                    <span>Sqlite Database</span>
-                    <span>Javascript</span>
+                    <span>SQLite Database</span>
+                    <span>JavaScript</span>
                     <span>Clean Design</span>
                 </div>
             </div>
-            
-
-               <div class="projects-grid">
-                <div class="project-card">
-                <div class="project-header">
-                    <i class="fa-regular fa-folder project-icon"></i>
-                    <div class="project-links">
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="https://mero-kotha.com/"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                    </div>
-                </div>
-                <h3>Mero Kotha Web App</h3>
-                <p>My biggest project of all time.A Simple web app which helps to find the rooms or any empty space for rent ans users can add and view the listings for free.</p>
-                <p>Visit: www.mero-kotha.com</p>
-                <div class="project-tags">
-                    <span>MongoDB</span>
-                    <span>react.js</span>
-                    <span>node.js</span>
-                </div>
-            </div>
-            </div>
-            
-
-            
-           
 
             <div class="project-card">
                 <div class="project-header">
                     <i class="fa-regular fa-folder project-icon"></i>
                     <div class="project-links">
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="sidebar.html"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a href="#" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                        <a href="https://mero-kotha.vercel.app/" aria-label="Project Link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <h3>Mero Kotha Web App</h3>
+                <p>My biggest project of all time. A simple web app which helps to find rooms or any empty space for rent where users can add and view listings for free.</p>
+                <div class="project-tags">
+                    <span>MongoDB</span>
+                    <span>React.js</span>
+                    <span>Node.js</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <i class="fa-regular fa-folder project-icon"></i>
+                    <div class="project-links">
+                        <a href="#" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                        <a href="sidebar.html" aria-label="Project Link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </div>
                 </div>
                 <h3>Online Student Portal</h3>
@@ -253,8 +209,8 @@
                 <div class="project-header">
                     <i class="fa-regular fa-folder project-icon"></i>
                     <div class="project-links">
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="hospital.html"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a href="#" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                        <a href="hospital.html" aria-label="Project Link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </div>
                 </div>
                 <h3>Hospital Appointment Booking</h3>
@@ -265,12 +221,12 @@
                 </div>
             </div>
 
-<div class="project-card">
+            <div class="project-card">
                 <div class="project-header">
                     <i class="fa-regular fa-folder project-icon"></i>
                     <div class="project-links">
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="login.html"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a href="#" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                        <a href="login.html" aria-label="Project Link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </div>
                 </div>
                 <h3>NotesSharing Platform</h3>
@@ -281,16 +237,14 @@
                 </div>
             </div>
 
-
-             <div class="project-card">
+            <div class="project-card">
                 <div class="project-header">
                     <i class="fa-regular fa-folder project-icon"></i>
                     <div class="project-links">
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="spotifyclone.html"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a href="#" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                        <a href="spotifyclone.html" aria-label="Project Link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </div>
                 </div>
-
                 <h3>Spotify Playlist</h3>
                 <p>A sleek, minimal audio-streaming dashboard player interface tracking dynamic playlists.</p>
                 <div class="project-tags">
@@ -304,8 +258,8 @@
                 <div class="project-header">
                     <i class="fa-regular fa-folder project-icon"></i>
                     <div class="project-links">
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="shoes.html"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a href="#" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                        <a href="shoes.html" aria-label="Project Link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </div>
                 </div>
                 <h3>Nike Sneaker Website</h3>
@@ -316,51 +270,41 @@
                 </div>
             </div>
 
-           
-
-        
             <div class="project-card">
                 <div class="project-header">
                     <i class="fa-regular fa-folder project-icon"></i>
                     <div class="project-links">
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="https://itsgreywood.com/"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a href="#" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                        <a href="https://itsgreywood.com/" aria-label="Project Link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </div>
                 </div>
                 <h3>Website for local company</h3>
-                <p>A simle landing page for my client</p>
+                <p>A simple landing page for my client.</p>
                 <div class="project-tags">
-                    <span>Tech1</span>
-                    <span>Tech2</span>
+                    <span>HTML5</span>
+                    <span>CSS Modules</span>
                 </div>
             </div>
-
-            
-
 
             <div class="project-card">
                 <div class="project-header">
                     <i class="fa-regular fa-folder project-icon"></i>
                     <div class="project-links">
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href=""><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a href="#" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                        <a href="" aria-label="Project Link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </div>
                 </div>
                 <h3>MORE TO COME</h3>
-                <p></p>
+                <p>Next project processing...</p>
                 <div class="project-tags">
-                    <span>Tech1</span>
-                    <span>Tech2</span>
+                    <span>Next.js</span>
+                    <span>Tailwind</span>
                 </div>
             </div>
-            
-            
-
         </div>
     </section>
 
-
-<section id="research" class="container">
+    <section id="research" class="container">
         <div class="section-title">
             <h2>Research & Articles</h2>
         </div>
@@ -371,9 +315,7 @@
                     <span class="research-category">Cybersecurity</span>
                 </div>
                 <h3>Analysis of Modern Web Vulnerabilities & Sandbox Environments</h3>
-                <p>A study exploring isolated systems, looking at mitigation strategies against complex surface-level penetration techniques inside cross-origin structures.
-
-                </p>
+                <p>A study exploring isolated systems, looking at mitigation strategies against complex surface-level penetration techniques inside cross-origin structures.</p>
                 <div class="research-footer">
                     <a href="#" class="read-link">Read Publication (coming soon) <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
@@ -385,28 +327,24 @@
                     <span class="research-category">Cybersecurity Tool</span>
                 </div>
                 <h3>Advanced Port Scanner</h3>
-                <p>We all are familiar with Nmap.But it comes with limitations, we cannot further analyze about the open ports and how to exploit a target. I have developed a 
-                    Cybersecurity tool which helps to exploit the target more efficiently and tells us which attack we should run . It is one of my own Cybersecurity project.
-                </p>
+                <p>Developed a cybersecurity tool that helps analyze targets efficiently beyond traditional basic port scanners to determine strategic vulnerability testing patterns.</p>
                 <div class="research-footer">
-                    <a href="research.html" class="read-link">Read Article<i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="research.html" class="read-link">Read Article <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </article>
         </div>
     </section>
 
-
-
     <section id="contact" class="container">
         <div class="contact-box">
             <h2>Contact Me</h2>
-            <h5>Email:bhuwansangroula588@gmail.com</h5>            
-            <form>
+            <h5>Email: bhuwansangroula588@gmail.com</h5>            
+            <form action="#">
                 <div class="input-group">
-                    <input type="text" placeholder=" Name" required>
-                    <input type="email" placeholder=" Email" required>
+                    <input type="text" placeholder="Name" required>
+                    <input type="email" placeholder="Email" required>
                 </div>
-                <textarea rows="6" placeholder="Please Contact me through email. My google sheets was filled with spam messages last time." required></textarea>
+                <textarea rows="6" placeholder="Please contact me through email. My logs overflowed with spam entries previously." required></textarea>
                 <button type="submit" class="btn btn-primary">Send Message <i class="fa-solid fa-paper-plane"></i></button>
             </form>
         </div>
@@ -416,9 +354,9 @@
         <div class="container footer-content">
             <p>&copy; 2026 dev.bhuwan. All rights reserved. Precision Built.</p>
             <div class="social-tray">
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.instagram.com/_bhuone__/"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/_bhuone__/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </footer>
@@ -435,6 +373,33 @@
             buttons.forEach(b => b.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
             evt.currentTarget.classList.add('active');
+        }
+
+        // Dark/Light Theme Switch Engine
+        const themeToggleBtn = document.getElementById("theme-toggle");
+        const themeIcon = document.getElementById("theme-icon");
+
+        const currentTheme = localStorage.getItem("theme") || 
+            (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+
+        document.documentElement.setAttribute("data-theme", currentTheme);
+        updateToggleIcon(currentTheme);
+
+        themeToggleBtn.addEventListener("click", () => {
+            let scheme = document.documentElement.getAttribute("data-theme");
+            let targetScheme = scheme === "dark" ? "light" : "dark";
+            
+            document.documentElement.setAttribute("data-theme", targetScheme);
+            localStorage.setItem("theme", targetScheme);
+            updateToggleIcon(targetScheme);
+        });
+
+        function updateToggleIcon(theme) {
+            if (theme === "dark") {
+                themeIcon.className = "fas fa-sun";
+            } else {
+                themeIcon.className = "fas fa-moon";
+            }
         }
     </script>
 </body>
